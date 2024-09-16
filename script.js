@@ -4,7 +4,7 @@ const randomColorBtn = document.getElementById("random-color");
 const eraserBtn = document.getElementById("eraser-btn");
 inputBtn.addEventListener("click", () => {
   const squarePerSide = parseInt(prompt("Enter Number less then 100"));
-  if (squarePerSide > 0 && squarePerSide < 100) {
+  if (squarePerSide > 0 && squarePerSide <= 100) {
     makeGrid(squarePerSide);
   } else {
     alert("Please enter an number between 1 and 100");
@@ -40,7 +40,7 @@ const makeGrid = (squarePerSide) => {
     square.style.height = `${squareSize}px`;
 
     square.addEventListener("mouseover", () => {
-      if (isRandomColorMode) {
+      if (isRandomColorMode && isEraserModeOn === false) {
         const colorArr = randomColor();
         square.style.backgroundColor = `rgb(${colorArr[0]},${colorArr[1]},${colorArr[2]})`;
       } else {
